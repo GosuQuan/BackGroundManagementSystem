@@ -1,5 +1,5 @@
 import Mock from 'mockjs';
-import { resultSuccess } from '../_util';
+import { resultError, resultSuccess } from '../_util';
 
 const Random = Mock.Random;
 
@@ -36,14 +36,18 @@ const adminInfo = {
     },
   ],
 };
-
+const a = 1;
+const validate = (actions: Number) => {
+  return actions == 1;
+};
 export default [
   {
     url: '/api/login',
     timeout: 1000,
     method: 'post',
     response: () => {
-      return resultSuccess({ token });
+      if (validate(a)) return resultSuccess({ token });
+      return resultError();
     },
   },
   {

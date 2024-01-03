@@ -1,5 +1,5 @@
 import { http } from '@/utils/http/axios';
-
+import { LoginParams } from './userModel/LoginModel';
 export interface BasicResponseModel<T = any> {
   code: number;
   message: string;
@@ -25,7 +25,8 @@ export function getUserInfo() {
 /**
  * @description: 用户登录
  */
-export function login(params) {
+export function login(params: LoginParams) {
+  console.log(params);
   return http.request<BasicResponseModel>(
     {
       url: '/login',
